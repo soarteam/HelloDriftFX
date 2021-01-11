@@ -19,13 +19,15 @@ import static org.lwjgl.opengl.GL30C.*;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
-/** Modern OpenGL port of <a href="https://www.opengl.org/archives/resources/code/samples/glut_examples/mesademos/gears.c">gears.c</a>. */
+/**
+ * Modern OpenGL port of <a href="https://www.opengl.org/archives/resources/code/samples/glut_examples/mesademos/gears.c">gears.c</a>.
+ */
 public class GLXGears {
 
     private final Gear
-        gear1,
-        gear2,
-        gear3;
+            gear1,
+            gear2,
+            gear3;
 
     private final int program;
     private final int positions;
@@ -39,15 +41,15 @@ public class GLXGears {
     // ---------------------
 
     private final Matrix4d
-        P   = new Matrix4d(),
-        MVP = new Matrix4d();
+            P = new Matrix4d(),
+            MVP = new Matrix4d();
     private final Matrix4x3d
-        V   = new Matrix4x3d(),
-        M   = new Matrix4x3d(),
-        MV  = new Matrix4x3d();
+            V = new Matrix4x3d(),
+            M = new Matrix4x3d(),
+            MV = new Matrix4x3d();
 
     private final Matrix3d normal = new Matrix3d();
-    private final Vector3d light  = new Vector3d();
+    private final Vector3d light = new Vector3d();
 
     private final FloatBuffer vec3f = BufferUtils.createFloatBuffer(3);
     private final FloatBuffer mat3f = BufferUtils.createFloatBuffer(3 * 3);
@@ -55,7 +57,7 @@ public class GLXGears {
 
     // ---------------------
 
-    private long   count;
+    private long count;
     private double startTime;
 
     private double distance = 40.0f;
@@ -109,9 +111,9 @@ public class GLXGears {
         glEnableVertexAttribArray(positions);
         glEnableVertexAttribArray(normals);
 
-        gear1 = new Gear(1.0, 4.0, 1.0, 20, 0.7, new float[] {0.8f, 0.1f, 0.0f, 1.0f});
-        gear2 = new Gear(0.5, 2.0, 2.0, 10, 0.7, new float[] {0.0f, 0.8f, 0.2f, 1.0f});
-        gear3 = new Gear(1.3, 2.0, 0.5, 10, 0.7, new float[] {0.2f, 0.2f, 1.0f, 1.0f});
+        gear1 = new Gear(1.0, 4.0, 1.0, 20, 0.7, new float[]{0.8f, 0.1f, 0.0f, 1.0f});
+        gear2 = new Gear(0.5, 2.0, 2.0, 10, 0.7, new float[]{0.0f, 0.8f, 0.2f, 1.0f});
+        gear3 = new Gear(1.3, 2.0, 0.5, 10, 0.7, new float[]{0.2f, 0.2f, 1.0f, 1.0f});
 
         startTime = System.currentTimeMillis() / 1000.0;
     }
@@ -121,7 +123,7 @@ public class GLXGears {
     }
 
     public void setSize(int width, int height) {
-        float h = height / (float)width;
+        float h = height / (float) width;
 
         glViewport(0, 0, width, height);
         if (h < 1.0f) {
@@ -136,8 +138,8 @@ public class GLXGears {
 
         // VIEW
         V.translation(0.0, 0.0, -distance)
-         .rotateX(20.0f * PI / 180)
-         .rotateY(30.0f * PI / 180);
+                .rotateX(20.0f * PI / 180)
+                .rotateY(30.0f * PI / 180);
         //V.rotateZ(0.0f * PI / 180);
 
         // LIGHT
@@ -145,17 +147,17 @@ public class GLXGears {
 
         // GEAR 1
         M.translation(-3.0, -2.0, 0.0)
-         .rotateZ(angle * PI / 180);
+                .rotateZ(angle * PI / 180);
         drawGear(gear1);
 
         // GEAR 2
         M.translation(3.1, -2.0, 0.0)
-         .rotateZ((-2.0 * angle - 9.0) * PI / 180);
+                .rotateZ((-2.0 * angle - 9.0) * PI / 180);
         drawGear(gear2);
 
         // GEAR 3
         M.translation(-3.1, 4.2, 0.0)
-         .rotateZ((-2.0 * angle - 25.0) * PI / 180);
+                .rotateZ((-2.0 * angle - 25.0) * PI / 180);
         drawGear(gear3);
 
         count++;
@@ -198,9 +200,9 @@ public class GLXGears {
             ByteBuffer header = stack.ASCII("#version " + version + "\n#line 0\n", false);
 
             glShaderSource(
-                shader,
-                stack.pointers(header, code),
-                stack.ints(header.remaining(), code.remaining())
+                    shader,
+                    stack.pointers(header, code),
+                    stack.ints(header.remaining(), code.remaining())
             );
 
             glCompileShader(shader);
@@ -243,8 +245,8 @@ public class GLXGears {
         final int vertexCount;
 
         private Gear(
-            double inner_radius, double outer_radius, double width, int teeth, double tooth_depth,
-            float[] color
+                double inner_radius, double outer_radius, double width, int teeth, double tooth_depth,
+                float[] color
         ) {
             this.color = BufferUtils.createFloatBuffer(4);
             this.color.put(color).flip();
@@ -253,8 +255,8 @@ public class GLXGears {
             normalVBO = glGenBuffers();
 
             vertexCount = new Builder()
-                .build(inner_radius, outer_radius, width, teeth, tooth_depth)
-                .updateVBO(positionVBO, normalVBO);
+                    .build(inner_radius, outer_radius, width, teeth, tooth_depth)
+                    .updateVBO(positionVBO, normalVBO);
         }
 
         private static class Builder {
@@ -264,9 +266,9 @@ public class GLXGears {
             private FloatBuffer normals;
 
             private double
-                normalX,
-                normalY,
-                normalZ;
+                    normalX,
+                    normalY,
+                    normalZ;
 
             private final double[] quads = new double[4 * 3];
 
@@ -386,26 +388,26 @@ public class GLXGears {
                 // Sum normals around same position
                 for (int i = vertexCount - teeth * 6; i < vertexCount; i++) {
                     float
-                        x = normals.get(i * 3),
-                        y = normals.get(i * 3 + 1),
-                        z = normals.get(i * 3 + 2);
+                            x = normals.get(i * 3),
+                            y = normals.get(i * 3 + 1),
+                            z = normals.get(i * 3 + 2);
 
                     smoothMap.compute(new Vector3f(
-                        positions.get(i * 3),
-                        positions.get(i * 3 + 1),
-                        positions.get(i * 3 + 2)
+                            positions.get(i * 3),
+                            positions.get(i * 3 + 1),
+                            positions.get(i * 3 + 2)
                     ), (key, normal) -> normal == null
-                        ? new Vector3f(x, y, z)
-                        : normal.add(x, y, z));
+                            ? new Vector3f(x, y, z)
+                            : normal.add(x, y, z));
                 }
                 // Normalize
                 smoothMap.values().forEach(Vector3f::normalize);
                 // Apply smooth normals
                 for (int i = vertexCount - teeth * 6; i < vertexCount; i++) {
                     Vector3f normal = smoothMap.get(new Vector3f(
-                        positions.get(i * 3),
-                        positions.get(i * 3 + 1),
-                        positions.get(i * 3 + 2)
+                            positions.get(i * 3),
+                            positions.get(i * 3 + 1),
+                            positions.get(i * 3 + 2)
                     ));
 
                     normals.put(i * 3, normal.x);
@@ -442,13 +444,13 @@ public class GLXGears {
             }
 
             private void addVertex(double x, double y, double z) {
-                positions.put(vertexCount * 3, (float)x);
-                positions.put(vertexCount * 3 + 1, (float)y);
-                positions.put(vertexCount * 3 + 2, (float)z);
+                positions.put(vertexCount * 3, (float) x);
+                positions.put(vertexCount * 3 + 1, (float) y);
+                positions.put(vertexCount * 3 + 2, (float) z);
 
-                normals.put(vertexCount * 3, (float)normalX);
-                normals.put(vertexCount * 3 + 1, (float)normalY);
-                normals.put(vertexCount * 3 + 2, (float)normalZ);
+                normals.put(vertexCount * 3, (float) normalX);
+                normals.put(vertexCount * 3 + 1, (float) normalY);
+                normals.put(vertexCount * 3 + 2, (float) normalZ);
 
                 vertexCount++;
             }

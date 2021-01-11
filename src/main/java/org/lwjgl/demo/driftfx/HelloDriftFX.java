@@ -1,33 +1,31 @@
-/*
- * Copyright LWJGL. All rights reserved.
- * License terms: https://www.lwjgl.org/license
- */
 package org.lwjgl.demo.driftfx;
 
-import javafx.application.*;
-import javafx.scene.*;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
-import javafx.scene.paint.*;
-import javafx.stage.*;
-import org.eclipse.fx.drift.*;
-import org.lwjgl.*;
-import org.lwjgl.demo.opengl.*;
-import org.lwjgl.opengl.*;
-import org.lwjgl.system.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import org.eclipse.fx.drift.DriftFXSurface;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.demo.opengl.GLXGears;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryStack;
 
-import java.nio.*;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.*;
+import java.nio.ByteBuffer;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.lwjgl.driftfx.DriftFX.*;
 import static org.lwjgl.opengl.GL32C.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.system.MemoryStack.stackPush;
+import static org.lwjgl.system.MemoryUtil.memASCII;
 
 public class HelloDriftFX extends Application {
 
-    private final AtomicBoolean  aliveFlag = new AtomicBoolean(true);
+    private final AtomicBoolean aliveFlag = new AtomicBoolean(true);
     private final CountDownLatch exitLatch = new CountDownLatch(1);
 
     public static void main(String[] args) {
@@ -75,7 +73,7 @@ public class HelloDriftFX extends Application {
 
     private static class RenderThread extends Thread {
 
-        private final AtomicBoolean  aliveFlag;
+        private final AtomicBoolean aliveFlag;
         private final CountDownLatch exitLatch;
 
         private final long surface;
@@ -102,12 +100,12 @@ public class HelloDriftFX extends Application {
 
             long transferMode = driftfxSurfaceGetPlatformDefaultTransferMode();
             try (MemoryStack stack = stackPush()) {
-                PointerBuffer modes = stack.mallocPointer((int)driftfxSurfaceGetAvailableTransferModes(null));
+                PointerBuffer modes = stack.mallocPointer((int) driftfxSurfaceGetAvailableTransferModes(null));
                 driftfxSurfaceGetAvailableTransferModes(modes);
                 for (int i = 0; i < modes.limit(); i++) {
                     long mode = modes.get(i);
                     try (MemoryStack frame = stack.push()) {
-                        ByteBuffer name = frame.malloc((int)driftfxTransferModeName(mode, null));
+                        ByteBuffer name = frame.malloc((int) driftfxTransferModeName(mode, null));
                         driftfxTransferModeName(mode, name);
                         if (memASCII(name).startsWith("NVDX")) {
                             transferMode = mode;
@@ -118,7 +116,8 @@ public class HelloDriftFX extends Application {
             this.transferMode = transferMode;
         }
 
-        @Override public void run() {
+        @Override
+        public void run() {
             initGLState();
             renderLoop();
             cleanup();
@@ -131,7 +130,7 @@ public class HelloDriftFX extends Application {
             driftfxGLContextSetCurrent(context);
 
             try (MemoryStack frame = stackPush()) {
-                ByteBuffer name = frame.malloc((int)driftfxGLContextGetName(context, null));
+                ByteBuffer name = frame.malloc((int) driftfxGLContextGetName(context, null));
                 driftfxGLContextGetName(context, name);
                 System.out.println("GLContext name: " + memASCII(name));
             }
@@ -184,7 +183,7 @@ public class HelloDriftFX extends Application {
         }
 
         private void checkFBOSize() {
-            int width  = driftfxSurfaceGetWidth(surface);
+            int width = driftfxSurfaceGetWidth(surface);
             int height = driftfxSurfaceGetHeight(surface);
 
             if (width != this.width || height != this.height) {
