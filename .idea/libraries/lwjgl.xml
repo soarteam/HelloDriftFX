@@ -1,29 +1,29 @@
 <component name="libraryTable">
   <library name="lwjgl">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-driftfx" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-openal" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opencl" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opengl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-driftfx" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-openal" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-opencl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-opengl" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-driftfx" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-openal" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opencl" />
-      <root url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opengl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-driftfx" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-openal" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-opencl" />
+      <root url="file://$PROJECT_DIR$/lib/lwjgl-opengl" />
     </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-driftfx" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-openal" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opencl" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opengl" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl" recursive="false" type="SOURCES" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-driftfx" recursive="false" type="SOURCES" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-openal" recursive="false" type="SOURCES" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opencl" recursive="false" type="SOURCES" />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl/lwjgl-opengl" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-driftfx" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-openal" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-opencl" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-opengl" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-driftfx" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-openal" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-opencl" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lwjgl-opengl" recursive="false" type="SOURCES" />
   </library>
 </component>
